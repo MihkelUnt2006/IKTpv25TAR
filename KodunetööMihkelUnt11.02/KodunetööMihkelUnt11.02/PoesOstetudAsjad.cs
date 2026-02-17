@@ -42,7 +42,7 @@ namespace KodunetööMihkelUnt11._02
             if (ostud == "")
                 Console.WriteLine("Sa ei ostnud midagi.");
             else
-                Console.WriteLine("Ostetud: " + ostud + "Kokku: " + summa + " €.");
+                Console.WriteLine("Ostetud: " + ostud + "Kokku: " + summa + " euro.");
         }
     }
 }
