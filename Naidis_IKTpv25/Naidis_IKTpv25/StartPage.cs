@@ -56,6 +56,42 @@ namespace Naidis_IKTpv25
             Console.Write(Osa2_funktisoonid.Juku(nimi));
             Console.Write(Osa2_funktisoonid.Juku("Python"));
 
+            Osa2_funktisoonid.Pinginaabrid();
+
+            Osa2_funktisoonid.RemondiKalk();
+
+            Osa2_funktisoonid.soodustus();
+
+            Osa2_funktisoonid.temperatuur();
+
+            Osa2_funktisoonid.inimPikkus();
+
+            Osa2_funktisoonid.inimPikkusJaSugu();
+
+            Osa2_funktisoonid.poesOstetudAsjad();
+
+            Osa3_funktsioonid.JuhuslkiudRuudud();
+            Osa3_funktsioonid.arvuAnaluus(new double[] { 1, 2, 3, 4, 5 });
+
+            Osa3_funktsioonid.ostaElevantAra();
+
+            Osa3_funktsioonid.arvumang();
+
+            Osa3_funktsioonid.SuurimNeliarv();
+
+            Osa3_funktsioonid.Korrutustabel(10, 10);
+
+            Osa3_funktsioonid.Opilastegmangimine();
+
+            Osa3_funktsioonid.ArvudeRuudud();
+
+            Osa3_funktsioonid.PosJaNeg();
+
+            Osa3_funktsioonid.KeskSuuremad();
+
+            Osa3_funktsioonid.KoigeSuuremaOtsing();
+
+            Osa3_funktsioonid.PaarisjaPaaritu();
 
 
         }
