@@ -9,6 +9,20 @@ namespace Naidis_IKTpv25
     {
         public static void Main(string[] args)
         {
+            bool working = true;
+            while (working)
+            {
+                Console.WriteLine(" Peamine menüü ");
+                Console.WriteLine("1 Osa 1 funktsioonid");
+                Console.WriteLine("2 Osa 2 funktsioonid");
+                Console.WriteLine("3 Osa 3 funktsioonid");
+                Console.WriteLine("4 exit");
+                Console.Write("Vali osa");
+                int osa = Convert.ToInt32(Console.ReadLine());
+            }
+            {
+
+            }
             Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("1. Osa Andmetüübid, Alamfunktsioonid/meetodid");
             string tekst = "Tere tulemast C#-i maailma! ";
@@ -41,6 +55,8 @@ namespace Naidis_IKTpv25
 
             //    Console.WriteLine(e);
             //}
+
+           
 
 
             Random rnd = new Random();
