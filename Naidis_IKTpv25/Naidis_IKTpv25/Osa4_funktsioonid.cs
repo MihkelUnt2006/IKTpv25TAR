@@ -52,23 +52,29 @@ public class Osa4_funktsioonid
         }
 
     }
-    public static void Ridade_lugemine_listiks(string file)
+    public static List<string> Ridade_lugemine_listiks(string file)
     {
+
         List<string> kuude_list = new List<string>();
         try
         {
+
             string path = @$"..\..\..\{file}";
-            ;
             foreach (string rida in File.ReadAllLines(path))
             {
                 kuude_list.Add(rida);
+
             }
-            
+
+
         }
+
         catch (Exception)
         {
-            Console.WriteLine("Viga failiga");
+            Console.WriteLine("Viga failiga!");
         }
-    }
+        return kuude_list;
 
+
+    }
 }

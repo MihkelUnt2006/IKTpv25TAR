@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Naidis_IKTpv25
 {
-    internal class Osa1_funktsioonid
+    public class Osa1_funktsioonid
     {
+        public Osa1_funktsioonid() 
+        { 
+        }
     }
 }
