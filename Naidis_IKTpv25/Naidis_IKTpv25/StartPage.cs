@@ -56,61 +56,150 @@ namespace Naidis_IKTpv25
             //    Console.WriteLine(e);
             //}
 
-           
+            int[] arvud = new int[5];
+            while (true)
+            {
+                Console.WriteLine("1, 2, 3 Osa Funktsioonid");
+
+                Console.WriteLine("1. Juku");
+                Console.WriteLine("2. pinginabrid");
+                Console.WriteLine("3. pindala");
+                Console.WriteLine("4. soodus");
+                Console.WriteLine("5. tem");
+                Console.WriteLine("6. pikk");
+                Console.WriteLine("7. pood");
+                Console.WriteLine("8. MuudaElement");
+                Console.WriteLine("9. Täida_massiiv");
+                Console.WriteLine("10. foreachFunktisoon");
+                Console.WriteLine("11. GenereeriRuudud");
+                Console.WriteLine("12. Täida_Doublemassiiv та аналіз");
+                Console.WriteLine("13. ostsElevantAra");
+                Console.WriteLine("14. arvumang");
+                Console.WriteLine("15. SuurimNeliarv");
+                Console.WriteLine("16. GenereeriKorrutustabel");
+                Console.WriteLine("17. arvudRuudud");
+                Console.WriteLine("18. Positiivsed_ja_negatiivsed");
+                Console.WriteLine("20. arvudRuudud (повторно)");
+                Console.WriteLine("21. Rohkem kui keskmine");
+                Console.WriteLine("22. suurimJaIndeks");
+                Console.WriteLine("23. Statistika Inimesed");
+                Console.WriteLine("24. ÕpilastegaMängimine");
+                Console.WriteLine("25. binaariOsting");
+                Console.WriteLine("26. PaariPaaritud");
+                Console.WriteLine("0. Välja");
+                string valik = Console.ReadLine();
+                 if ( valik == "1")
+                 {
+                    Osa2_funktisoonid.Juku();
+
+                 }
+                else if (valik == "2")
+                {
+                    Osa2_funktisoonid.Pinginaabrid();
+                }
+                else if (valik == "3")
+                {
+                    Osa2_funktisoonid.RemondiKalk();
+                }
+                else if (valik == "4")
+                {
+                    Osa2_funktisoonid.soodustus();
+                }
+                else if (valik == "5")
+                {
+                    Osa2_funktisoonid.temperatuur();
+                }
+                else if (valik == "6")
+                {
+                    Osa2_funktisoonid.inimPikkus();
+                }
+                else if (valik == "7")
+                {
+                    Osa2_funktisoonid.inimPikkusJaSugu();
+                }
+                else if (valik == "8")
+                {
+                    Osa2_funktisoonid.poesOstetudAsjad();
+                }
+                else if (valik == "9")
+                {
+                    Osa3_funktsioonid.JuhuslkiudRuudud();
+                }
+                else if (valik == "10")
+                {
+                    Osa3_funktsioonid.arvuAnaluus(new double[] { 1, 2, 3, 4, 5 });
+                }
+                else if (valik == "11")
+                {
+                    Osa3_funktsioonid.ostaElevantAra();
+                }
+                else if (valik == "12")
+                {
+                    Osa3_funktsioonid.arvumang();
+                }
+                else if (valik == "13")
+                {
+                    Osa3_funktsioonid.SuurimNeliarv();
+                }
+                else if (valik == "14")
+                {
+                    Osa3_funktsioonid.arvumang();
+                }
+                else if (valik == "15")
+                {
+                    Osa3_funktsioonid.Korrutustabel(10, 10);
+                }
+                else if (valik == "16")
+                {
+                    Osa3_funktsioonid.Opilastegmangimine();
+                }
+                else if (valik == "17")
+                {
+                    Osa3_funktsioonid.ArvudeRuudud();
+                }
+                else if (valik == "18")
+                {
+                    Osa3_funktsioonid.PosJaNeg();
+                }
+                 else if (valik == "20")
+                 {
+                    Osa3_funktsioonid.KeskSuuremad();
+                 }
+                 else if (valik == "21")
+                 {
+                    Osa3_funktsioonid.KoigeSuuremaOtsing();
+                 }
+                 else if (valik == "22")
+                 {
+                    Osa3_funktsioonid.PaarisjaPaaritu();
+                 }
+                 else
+                 {
+                    Console.WriteLine("Viga! Palun vali uuesti");
+                 }
+                  
+
+                
+
+                Random rnd = new Random();
+                int juhuslik_arv = rnd.Next(-5, 25);
+
+                Console.WriteLine(Naidis_funktisoonid.Kuu_nimetus(juhuslik_arv));
+                juhuslik_arv = rnd.Next(-5, 25);
+
+                tekst = Naidis_funktisoonid.Kuu_nimetus(juhuslik_arv);
+                Console.WriteLine(tekst);
+
+                Console.Write(Osa2_funktisoonid.Juku());
+                Console.Write(Osa2_funktisoonid.Juku(nimi));
+                Console.Write(Osa2_funktisoonid.Juku("Python"));
+
+                
+                
 
 
-            Random rnd = new Random();
-            int juhuslik_arv = rnd.Next(-5, 25);
-
-            Console.WriteLine(Naidis_funktisoonid.Kuu_nimetus(juhuslik_arv));
-            juhuslik_arv = rnd.Next(-5, 25);
-
-            tekst = Naidis_funktisoonid.Kuu_nimetus(juhuslik_arv);
-            Console.WriteLine(tekst);
-
-            Console.Write(Osa2_funktisoonid.Juku());
-            Console.Write(Osa2_funktisoonid.Juku(nimi));
-            Console.Write(Osa2_funktisoonid.Juku("Python"));
-
-            Osa2_funktisoonid.Pinginaabrid();
-
-            Osa2_funktisoonid.RemondiKalk();
-
-            Osa2_funktisoonid.soodustus();
-
-            Osa2_funktisoonid.temperatuur();
-
-            Osa2_funktisoonid.inimPikkus();
-
-            Osa2_funktisoonid.inimPikkusJaSugu();
-
-            Osa2_funktisoonid.poesOstetudAsjad();
-
-            Osa3_funktsioonid.JuhuslkiudRuudud();
-            Osa3_funktsioonid.arvuAnaluus(new double[] { 1, 2, 3, 4, 5 });
-
-            Osa3_funktsioonid.ostaElevantAra();
-
-            Osa3_funktsioonid.arvumang();
-
-            Osa3_funktsioonid.SuurimNeliarv();
-
-            Osa3_funktsioonid.Korrutustabel(10, 10);
-
-            Osa3_funktsioonid.Opilastegmangimine();
-
-            Osa3_funktsioonid.ArvudeRuudud();
-
-            Osa3_funktsioonid.PosJaNeg();
-
-            Osa3_funktsioonid.KeskSuuremad();
-
-            Osa3_funktsioonid.KoigeSuuremaOtsing();
-
-            Osa3_funktsioonid.PaarisjaPaaritu();
-
+            }
 
         }
-
     }
 }
