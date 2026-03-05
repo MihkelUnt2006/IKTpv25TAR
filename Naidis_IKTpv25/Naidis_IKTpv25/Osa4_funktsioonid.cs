@@ -77,4 +77,46 @@ public class Osa4_funktsioonid
 
 
     }
+    public static void listi_muutmine(string file)
+    {
+        List<string> kuude_list = Ridade_lugemine_listiks(file);
+
+        foreach (string kuu in kuude_list)
+        {
+            Console.WriteLine(kuu);
+        }
+
+        // Eemalda "Juuni"
+        kuude_list.Remove("Juuni");
+
+        // Muuda esimest elementi
+        if (kuude_list.Count > 0)
+            kuude_list[0] = "Veeel kuuu";
+
+        Console.WriteLine("--------------Kustutasime juuni-----------");
+
+        foreach (string kuu in kuude_list)
+        {
+            Console.WriteLine(kuu);
+        }
+    }
+    public static void Otsing(string file)
+    {
+        List<string> kuude_list = Ridade_lugemine_listiks(file);
+        Console.WriteLine("Sisesta kuu nimi, mida otsida:");
+        string otsitav = Console.ReadLine();
+
+        if (kuude_list.Contains(otsitav))
+            Console.WriteLine("Kuu " + otsitav + " on olemas.");
+        else
+            Console.WriteLine("Sellist kuud pole.");
+    }
+    public static void Listisalvestamine(string file)
+    {
+        List<string> kuude_list = Ridade_lugemine_listiks(file);
+        string path = @$"..\..\..\{file}";
+        File.WriteAllLines(path, kuude_list);
+        Console.WriteLine("Andmed on salvestatud.");
+    }
+    
 }
