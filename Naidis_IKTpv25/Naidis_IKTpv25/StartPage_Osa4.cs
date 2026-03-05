@@ -12,7 +12,7 @@ namespace Naidis_IKTpv25
             {
                 Console.WriteLine("4. Osa Funktsioonid");
                 string valik = Console.ReadLine();
-                string fail = "";
+                string file = "";
                 List<string> list = new List<string>();
                 switch (valik)
                 {
@@ -21,18 +21,22 @@ namespace Naidis_IKTpv25
 
                     case "3":
                         Console.Write("failinimi: ");
-                        fail = Console.ReadLine();
-                        Osa4_funktsioonid.Ridade_lugemine(fail);
+                        file = Console.ReadLine();
+                        Osa4_funktsioonid.Ridade_lugemine(file);
 
 
                         break;
                     case "4":
                         Console.Write("failinimi: ");
-                        fail = Console.ReadLine();
-                        list = Osa4_funktsioonid.Ridade_lugemine_listiks(fail);
+                        file = Console.ReadLine();
+                        list = Osa4_funktsioonid.Ridade_lugemine_listiks(file);
 
 
                         break;
+                    case "5":
+                        Osa4_funktsioonid.listi_muutmine(file);break;
+                    case "6":
+                        Osa4_funktsioonid.Otsing(); break;
                     default: Console.Write("sisesta kehtiv number: "); break;
                 }
             }

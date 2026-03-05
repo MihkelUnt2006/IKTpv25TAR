@@ -1,0 +1,130 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+
+namespace Praktilised_ülesanded
+{
+    public class ulesanded
+    {
+        public static void retseptid()
+        {
+            try
+            {
+                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Retseptid.txt");
+                StreamWriter text = new StreamWriter(path, true);
+                Console.WriteLine("Sisesta Itaalia toidu nime");
+                string lause = Console.ReadLine();
+                text.WriteLine(lause);
+                text.Close();
+
+
+
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Mingi viga failiga");
+            }
+            
+        }
+        public static void retseptilistiavamine()
+        {
+            try
+            {
+                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Retseptid.txt");
+                StreamReader text = new StreamReader(path);
+                string laused = text.ReadToEnd();
+                text.Close();
+                Console.WriteLine(laused);
+
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Mingi viga failiga, ei saa faili lugeda");
+            } 
+        }
+        public static void KoostisosadFail()
+        {
+            try
+            {
+                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "KoostisOsad.txt");
+                StreamWriter text = new StreamWriter(path, true);
+                Console.WriteLine("Sisesta koostis osad");
+                string lause = Console.ReadLine();
+                text.WriteLine(lause);
+                text.Close();
+
+
+
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Mingi viga failiga");
+            }
+        }
+        public static void KoostisOsadelugemine()
+        {
+            try
+            {
+                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "KoostisOsad.txt");
+                StreamReader text = new StreamReader(path);
+                string laused = text.ReadToEnd();
+                text.Close();
+                Console.WriteLine(laused);
+
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Mingi viga failiga, ei saa faili lugeda");
+            }
+        }
+        public static List<string> Koostisosadelist(string fail)
+        {
+            List<string> KoostisOsade_list = new List<string>();
+            try
+            {
+                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "KoostisOsad.txt");
+                foreach (string rida in File.ReadAllLines(path))
+                {
+                    KoostisOsade_list.Add(rida);
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Viga failiga");
+            }
+            return KoostisOsade_list;
+        }
+
+        public static void Koostisosademuutmine(string fail)
+        {
+            List<string> KoostisOsade_List = Koostisosadelist(fail);
+
+            foreach (string KoostisOsad in KoostisOsade_List)
+            {
+                Console.WriteLine(KoostisOsad);
+            }
+            KoostisOsade_List.Remove("Ketšup");
+
+            if (KoostisOsade_List.Count > 0)
+                KoostisOsade_List[0] = "Kvaliteetne Oliiviõli";
+
+            Console.WriteLine(" kustutasime Ketšup");
+            foreach ( string KoostisOsad in KoostisOsade_List)
+            {
+                Console.WriteLine(KoostisOsad);
+            }
+        }
+        public static void Otsing(string file)
+        {
+            List<string> kuude_list = Koostisosadelist(file);
+            Console.WriteLine("Sisesta Koostisosa nimi, mida otsida:");
+            string otsitav = Console.ReadLine();
+
+            if (kuude_list.Contains(otsitav))
+                Console.WriteLine("KoostisOsa " + otsitav + " on olemas.");
+            else
+                Console.WriteLine("Sellist KoostisOsa pole.");
+        }
+    }
+}
