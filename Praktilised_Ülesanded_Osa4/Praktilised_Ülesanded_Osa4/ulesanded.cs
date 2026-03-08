@@ -117,14 +117,23 @@ namespace Praktilised_ülesanded
         }
         public static void Otsing(string file)
         {
-            List<string> kuude_list = Koostisosadelist(file);
+            List<string> KoostisOsade_List = Koostisosadelist(file);
             Console.WriteLine("Sisesta Koostisosa nimi, mida otsida:");
             string otsitav = Console.ReadLine();
 
-            if (kuude_list.Contains(otsitav))
+            if (KoostisOsade_List.Contains(otsitav))
                 Console.WriteLine("KoostisOsa " + otsitav + " on olemas.");
             else
                 Console.WriteLine("Sellist KoostisOsa pole.");
         }
+        public static void Koostisosadesalvestamine(string file)
+        {
+            List<string> KoostisOsade_List = Koostisosadelist(file);
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Kuud.txt");
+            File.WriteAllLines(path, KoostisOsade_List);
+            Console.WriteLine("Andmed on salvestatud.");
+
+        }
+
     }
 }

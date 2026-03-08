@@ -41,10 +41,15 @@ namespace Praktilised_Ülesanded_Osa4
             {
                 ulesanded.Otsing("KoostisOsad.txt");
             }
+            else if (valik == "7")
+            {
+                ulesanded.Koostisosadesalvestamine("KoostisOsad.txt");
+            }
             else
             {
                 Console.WriteLine("viga");
             }
+            
         }
     }
 }
