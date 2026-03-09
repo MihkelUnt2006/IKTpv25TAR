@@ -11,6 +11,7 @@ namespace Praktilised_ülesanded
         {
             try
             {
+
                 string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Retseptid.txt");
                 StreamWriter text = new StreamWriter(path, true);
                 Console.WriteLine("Sisesta Itaalia toidu nime");
@@ -106,8 +107,8 @@ namespace Praktilised_ülesanded
             }
             KoostisOsade_List.Remove("Ketšup");
 
-            if (KoostisOsade_List.Count > 0)
-                KoostisOsade_List[0] = "Kvaliteetne Oliiviõli";
+            if (KoostisOsade_List.Count > 1)
+                KoostisOsade_List[1] = "Kvaliteetne Oliiviõli";
 
             Console.WriteLine(" kustutasime Ketšup");
             foreach ( string KoostisOsad in KoostisOsade_List)
@@ -131,7 +132,7 @@ namespace Praktilised_ülesanded
             List<string> KoostisOsade_List = Koostisosadelist(file);
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Kuud.txt");
             File.WriteAllLines(path, KoostisOsade_List);
-            Console.WriteLine("Andmed on salvestatud.");
+            Console.WriteLine("Koostis osad on salvestatud.");
 
         }
 
