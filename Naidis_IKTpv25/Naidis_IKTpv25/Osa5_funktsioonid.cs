@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Numerics;
 using System.Text;
 
 namespace Naidis_IKTpv25
@@ -255,54 +258,264 @@ namespace Naidis_IKTpv25
             }
             public static void KaalKalkulaator(inimene_osa5 inimene)
             {
-                //List<string> list = new List<string>();
-                //try
-                //{
-                //    string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tooded.txt");
-                //    foreach (string rida in File.ReadAllLines(path))
-                //        list.Add(rida);
-                //}
-                //catch (Exception)
-                //{
-                //    Console.WriteLine("Viga faili lugemisel!");
-                //}
+                List<string> list = new List<string>();
+                try
+                {
+                    string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tooded.txt");
+                    foreach (string rida in File.ReadAllLines(path))
+                        list.Add(rida);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Viga faili lugemisel!");
+                }
 
 
 
 
-                //double bmr;
+                double bmr;
 
-                //if (inimene.Sugu.ToLower() == "mees")
-                //    bmr = 88.362 + (13.397 * inimene.Kaal) + (4.799 * inimene.Pikkus) - (5.677 * inimene.Vanus);
-                //else
-                //    bmr = 447.593 + (9.247 * inimene.Kaal) + (3.098 * inimene.Pikkus) - (4.330 * inimene.Vanus);
+                if (inimene.Sugu.ToLower() == "mees")
+                    bmr = 88.362 + (13.397 * inimene.Kaal) + (4.799 * inimene.Pikkus) - (5.677 * inimene.Vanus);
+                else
+                    bmr = 447.593 + (9.247 * inimene.Kaal) + (3.098 * inimene.Pikkus) - (4.330 * inimene.Vanus);
 
-                //double[] kordajad = { 1.2, 1.375, 1.55, 1.725, 1.9 };
-                //double kordaja = kordajad[inimene.Aktiivsustase - 1];
-                //double paevaneKalorid = bmr * kordaja;
-                //Console.WriteLine($"Te peate sööma: {paevaneKalorid:F2} kcal/paev");
+                double[] kordajad = { 1.2, 1.375, 1.55, 1.725, 1.9 };
+                // aktiivsustase on Inimene_osa5 klassis salvestatud Aktiivsustase (suurtäht oluline)
+                int indeks = Math.Max(1, Math.Min(kordajad.Length, (int)inimene.Aktiivsustase)) - 1;
+                double kordaja = kordajad[indeks];
+                double paevaneKalorid = bmr * kordaja;
+                Console.WriteLine($"Te peate sööma: {paevaneKalorid:F2} kcal/paev");
 
-                //double hommikusook = paevaneKalorid * 0.30;
-                //double lounasook = paevaneKalorid * 0.40;
-                //double ohtusook = paevaneKalorid * 0.30;
-                //Random rnd = new Random();
+                double hommikusook = paevaneKalorid * 0.30;
+                double lounasook = paevaneKalorid * 0.40;
+                double ohtusook = paevaneKalorid * 0.30;
+                Random rnd = new Random();
 
-                //List<string> toidud = list.OrderBy(x => rnd.Next()).ToList();
+                List<string> toidud = list.OrderBy(x => rnd.Next()).ToList();
 
 
-                //string[] osad0 = toidud[0].Split(';');
-                //string[] osad1 = toidud[1].Split(';');
-                //string[] osad2 = toidud[2].Split(';');
+                string[] osad0 = toidud[0].Split(';');
+                string[] osad1 = toidud[1].Split(';');
+                string[] osad2 = toidud[2].Split(';');
 
-                //double kogus0 = hommikusook / double.Parse(osad0[1]) * 100;
-                //double kogus1 = lounasook / double.Parse(osad1[1]) * 100;
-                //double kogus2 = ohtusook / double.Parse(osad2[1]) * 100;
-                //Console.WriteLine("--------------------------------------------------------------------");
-                //Console.WriteLine($"Hommikusöök: {osad0[0],-20} {kogus0:F0}g  ({hommikusook:F0} kcal)");
-                //Console.WriteLine($"Lõunasöök:   {osad1[0],-20} {kogus1:F0}g  ({lounasook:F0} kcal)");
-                //Console.WriteLine($"Õhtusöök:    {osad2[0],-20} {kogus2:F0}g  ({ohtusook:F0} kcal)");
-                //Console.WriteLine("--------------------------------------------------------------------");
+                double kogus0 = hommikusook / double.Parse(osad0[1]) * 100;
+                double kogus1 = lounasook / double.Parse(osad1[1]) * 100;
+                double kogus2 = ohtusook / double.Parse(osad2[1]) * 100;
+                Console.WriteLine("--------------------------------------------------------------------");
+                Console.WriteLine($"Hommikusöök: {osad0[0],-20} {kogus0:F0}g  ({hommikusook:F0} kcal)");
+                Console.WriteLine($"Lõunasöök:   {osad1[0],-20} {kogus1:F0}g  ({lounasook:F0} kcal)");
+                Console.WriteLine($"Õhtusöök:    {osad2[0],-20} {kogus2:F0}g  ({ohtusook:F0} kcal)");
+                Console.WriteLine("--------------------------------------------------------------------");
+
             }
+            public static void Maakonnad_pealinnad()
+            {
+                Dictionary<string, string> eesti = new Dictionary<string, string>();
+                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Eesti.txt");
+
+                try
+                {
+                    foreach (string rida in File.ReadAllLines(path))
+                    {
+                        string[] osad = rida.Split(';');
+                        eesti.Add(osad[0], osad[1]);
+                    }
+
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Viga faili lugemisel!");
+                }
+                Console.WriteLine("kas sa tahad mängida Maakonnad_pealinnad (jah/ei)");
+                string vastus = Console.ReadLine().ToLower();
+
+
+                if (vastus == "jah")
+                {
+                    string sisend = "";
+                    Random rnd = new Random();
+
+                    List<string> maakonnad = eesti.Keys.OrderBy(x => rnd.Next()).ToList();
+
+                    int kogemus = 0;
+                    foreach (string maakond in maakonnad)
+                    {
+                        Console.WriteLine($"Mis on {maakond} keskus?");
+                        sisend = Console.ReadLine().Trim();
+                        sisend = char.ToUpper(sisend[0]) + sisend.Substring(1).ToLower();
+
+                        if (sisend == eesti[maakond])
+                        {
+                            Console.WriteLine("Õige!");
+                            kogemus++;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Vale! Õige vastus on {eesti[maakond]}");
+                        }
+                    }
+
+                    double protsent = (double)kogemus / maakonnad.Count * 100;
+                    Console.WriteLine($"Tulemus: {kogemus}/{maakonnad.Count} = {protsent:F0}%");
+
+
+
+                    Console.Write("Sisesta maakond või linn: ");
+                    sisend = Console.ReadLine().Trim();
+                    sisend = char.ToUpper(sisend[0]) + sisend.Substring(1).ToLower(); // nagu .capitalize() Pythonis
+                    if (eesti.ContainsKey(sisend))
+                    {
+                        Console.WriteLine($"{sisend} keskus on {eesti[sisend]}");
+                    }
+
+                    else if (eesti.ContainsValue(sisend))
+                    {
+                        foreach (var paar in eesti)
+                        {
+                            if (paar.Value == sisend)
+                            {
+                                Console.WriteLine($"{sisend} asub maakonnas {paar.Key}");
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{sisend} ei leitud!");
+                        Console.Write("Kas soovid lisada? (jah/ei): ");
+                        if (Console.ReadLine().ToLower() == "jah")
+                        {
+                            Console.Write("Sisesta maakond: ");
+                            string maakond = Console.ReadLine();
+
+                            Console.Write("Sisesta keskus: ");
+                            string keskus = Console.ReadLine();
+
+                            eesti.Add(maakond, keskus);
+                            File.AppendAllText(path, $"{maakond};{keskus}");
+                            Console.WriteLine("Lisatud!");
+                        }
+                    }
+
+
+                }
+
+            }
+
+            public static void opilased(List<Naidis_IKTpv25.opilane> opilased)
+            {
+
+                opilased = opilased.OrderByDescending(o => o.Hinded.Average()).ToList();
+                foreach (Naidis_IKTpv25.opilane opilane in opilased)
+                {
+                    double keskmine = opilane.Hinded.Average();
+                    Console.WriteLine($"{opilane.Nimi} keskminehind: {keskmine}");
+
+                }
+                Console.WriteLine($"parim keskmine hind:  {opilased[0].Nimi} {opilased[0].Hinded.Average()} ");
+
+            }
+
+            public static void Tekstist_arvud()
+            {
+                int suuremKui = 0;
+                double[] masiiv = new double[5];
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.WriteLine($"sisesta {i}. arv: ");
+                    masiiv[i] = double.Parse(Console.ReadLine());
+
+
+                }
+
+                Array.Sort(masiiv);
+                foreach (double arv in masiiv)
+                {
+                    Console.WriteLine(arv);
+                    if (arv > masiiv.Average())
+                    {
+                        suuremKui++;
+                    }
+                }
+
+
+                double min = masiiv.Min();
+                double max = masiiv.Max();
+                double keskmine = masiiv.Average();
+
+                Console.WriteLine($"Maksimaalne arv masiivist: {max}");
+                Console.WriteLine($"Minimaalne arv masiivist: {min}");
+                Console.WriteLine($"Keskmine arv masiivist: {keskmine}");
+                Console.WriteLine($"Arvudest suurem kui keskmine: {suuremKui}");
+
+
+
+
+
+            }
+
+            public static void Lemmikloomade_register()
+            {
+
+                List<Naidis_IKTpv25.Lemmikloom> lemmikloomad = new List<Naidis_IKTpv25.Lemmikloom>();
+
+                for (int i = 0; i < 5; i++)
+                {
+                    Naidis_IKTpv25.Lemmikloom loom = new Naidis_IKTpv25.Lemmikloom();
+
+                    Console.Write($"Sisesta {i + 1}. looma nimi: ");
+                    loom.Nimi = Console.ReadLine();
+
+                    Console.Write($"Sisesta {i + 1}. looma liik (kass/koer jne): ");
+                    loom.Liik = Console.ReadLine();
+
+                    Console.Write($"Sisesta {i + 1}. looma vanus: ");
+                    loom.Vanus = int.Parse(Console.ReadLine());
+
+                    lemmikloomad.Add(loom);
+                    Console.WriteLine("----------------------------");
+                }
+                foreach (Naidis_IKTpv25.Lemmikloom l in lemmikloomad)
+                {
+                    if (l.Liik.ToLower() == "kass")
+                    {
+                        Console.WriteLine("Kass: " + l.Nimi + ", Liik: " + l.Liik + ", Vanus: " + l.Vanus);
+                    }
+                }
+                double keskmineVanus = lemmikloomad.Average(l => l.Vanus);
+                lemmikloomad.Sort((x, y) => y.Vanus.CompareTo(x.Vanus));
+                string vaneimLoom = lemmikloomad[0].Nimi;
+
+
+
+                Console.WriteLine($"Vanim loom: {vaneimLoom}");
+                Console.WriteLine($"Keskmine vanus: {keskmineVanus}");
+                Console.WriteLine("kas sa tahad otsida mingi loom (jah/ei)?:  ");
+                string otsing = Console.ReadLine().ToLower();
+                if (otsing == "jah")
+                {
+                    Console.WriteLine("Sisesta otsitav loom: ");
+                    string ostsitudLoom = Console.ReadLine();
+                    for (int lo = 0; lo < lemmikloomad.Count; lo++)
+                    {
+                        if (ostsitudLoom == lemmikloomad[lo].Nimi)
+                        {
+                            Console.WriteLine($"Loom leitud: {lemmikloomad[lo].Nimi}, Liik: {lemmikloomad[lo].Liik}, Vanus: {lemmikloomad[lo].Vanus}");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Looma ei leitud!");
+                            break;
+                        }
+                    }
+                }
+            }
+
+    
+
         }
     }
 }
+

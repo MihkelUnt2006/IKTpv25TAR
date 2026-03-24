@@ -12,7 +12,7 @@ namespace Naidis_IKTpv25
         public string Sugu { get; set; }
         public double Pikkus { get; set; }
         public double Kaal { get; set; }
-        public double Aktiivsustase { get; set; }
+        public int Aktiivsustase { get; set; }
         public inimene_osa5(string nimi, int vanus, string sugu, double pikkus, double kaal, int aktiivsustase)
         {
             Nimi = nimi;
