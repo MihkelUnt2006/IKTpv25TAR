@@ -148,7 +148,7 @@ namespace Naidis_IKTpv25
                         }
 
                     }
-                    ulesanded.opilased(opilased);
+                    ulesanded.opilased();
                     break;
 
 

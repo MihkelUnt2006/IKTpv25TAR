@@ -281,7 +281,7 @@ namespace Naidis_IKTpv25
                     bmr = 447.593 + (9.247 * inimene.Kaal) + (3.098 * inimene.Pikkus) - (4.330 * inimene.Vanus);
 
                 double[] kordajad = { 1.2, 1.375, 1.55, 1.725, 1.9 };
-                // aktiivsustase on Inimene_osa5 klassis salvestatud Aktiivsustase (suurtäht oluline)
+                
                 int indeks = Math.Max(1, Math.Min(kordajad.Length, (int)inimene.Aktiivsustase)) - 1;
                 double kordaja = kordajad[indeks];
                 double paevaneKalorid = bmr * kordaja;
@@ -311,8 +311,30 @@ namespace Naidis_IKTpv25
             }
             public static void Maakonnad_pealinnad()
             {
+                
                 Dictionary<string, string> eesti = new Dictionary<string, string>();
                 string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Eesti.txt");
+
+                string[] data = new string[]
+                {
+                    "Harjumaa;Tallinn",
+                    "Hiiumaa;Kärdla",
+                    "Ida-Virumaa;Jõhvi",
+                    "Jõgevamaa;Jõgeva",
+                    "Järvamaa;Paide",
+                    "Läänemaa;Haapsalu",
+                    "Lääne-Virumaa;Rakvere",
+                    "Põlvamaa;Põlva",
+                    "Pärnumaa;Pärnu",
+                    "Raplamaa;Rapla",
+                    "Saaremaa;Kuressaare",
+                    "Tartumaa;Tartu",
+                    "Valgamaa;Valga",
+                    "Viljandimaa;Viljandi",
+                    "Võrumaa;Võru"
+
+                };
+                File.WriteAllLines(path, data, Encoding.UTF8);
 
                 try
                 {
@@ -363,7 +385,7 @@ namespace Naidis_IKTpv25
 
                     Console.Write("Sisesta maakond või linn: ");
                     sisend = Console.ReadLine().Trim();
-                    sisend = char.ToUpper(sisend[0]) + sisend.Substring(1).ToLower(); // nagu .capitalize() Pythonis
+                    sisend = char.ToUpper(sisend[0]) + sisend.Substring(1).ToLower(); 
                     if (eesti.ContainsKey(sisend))
                     {
                         Console.WriteLine($"{sisend} keskus on {eesti[sisend]}");
@@ -403,20 +425,52 @@ namespace Naidis_IKTpv25
 
             }
 
-            public static void opilased(List<Naidis_IKTpv25.opilane> opilased)
+            public static void opilased()
             {
+                List<opilane> opilased = new List<opilane>();
 
-                opilased = opilased.OrderByDescending(o => o.Hinded.Average()).ToList();
-                foreach (Naidis_IKTpv25.opilane opilane in opilased)
+                for (int i = 0; i < 3; i++)
                 {
-                    double keskmine = opilane.Hinded.Average();
-                    Console.WriteLine($"{opilane.Nimi} keskminehind: {keskmine}");
+                    try
+                    {
+                        List<int> hinded = new List<int>();
+                        Console.Write("Sisesta õpilase nimi: ");
+                        string nimi = Console.ReadLine();
+                        for (int j = 0; j < 5; j++)
+                        {
 
+                            Console.Write("Sisesta õpilase hinded (1-5): ");
+                            int hinne = int.Parse(Console.ReadLine());
+                            if (hinne > 1 || hinne < 5)
+                            {
+                                hinded.Add(hinne);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Hinded peab olema vahemikus 1-5");
+                            }
+
+                        }
+                        opilane uus_opilane = new opilane(nimi, hinded);
+                        opilased.Add(uus_opilane);
+                    }
+
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Vale andmed");
+
+                    }
+
+                    opilased = opilased.OrderByDescending(o => o.Hinded.Average()).ToList();
+                    foreach (opilane opilane in opilased)
+                    {
+                        double keskmine = opilane.Hinded.Average();
+                        Console.WriteLine($"{opilane.Nimi} keskminehind: {keskmine}");
+
+                    }
+                    Console.WriteLine($"parim keskmine hind:  {opilased[0].Nimi} {opilased[0].Hinded.Average()} ");
                 }
-                Console.WriteLine($"parim keskmine hind:  {opilased[0].Nimi} {opilased[0].Hinded.Average()} ");
-
             }
-
             public static void Tekstist_arvud()
             {
                 int suuremKui = 0;
