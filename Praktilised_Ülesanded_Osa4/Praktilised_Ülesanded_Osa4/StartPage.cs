@@ -45,6 +45,10 @@ namespace Praktilised_Ülesanded_Osa4
             {
                 ulesanded.Koostisosadesalvestamine("KoostisOsad.txt");
             }
+            else if (valik == "8")
+            {
+                menuUlesanne.MenuuUlesanne();
+            }
             else
             {
                 Console.WriteLine("viga");

@@ -5,7 +5,6 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>Naidis_IKTpv25.Osa5_start_page</StartupObject>
   </PropertyGroup>
 
 </Project>

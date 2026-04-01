@@ -11,6 +11,13 @@ namespace Naidis_IKTpv25
             while (true)
             {
                 Console.WriteLine("4. Osa Funktsioonid");
+                Console.WriteLine("1 tekstisisestamine");
+                Console.WriteLine("2 tekstilugemine");
+                Console.WriteLine("3 Ridade lugemine");
+                Console.WriteLine("4 Ridade lugemine listiks");
+                Console.WriteLine("5 listi muutmine ");
+                Console.WriteLine("6 otsimine listis");
+                
                 string valik = Console.ReadLine();
                 string file = "";
                 List<string> list = new List<string>();
@@ -36,7 +43,7 @@ namespace Naidis_IKTpv25
                     case "5":
                         Osa4_funktsioonid.listi_muutmine(file);break;
                     case "6":
-                        Osa4_funktsioonid.Otsing(); break;
+                        Osa4_funktsioonid.Otsing(file); break;
                     default: Console.Write("sisesta kehtiv number: "); break;
                 }
             }
