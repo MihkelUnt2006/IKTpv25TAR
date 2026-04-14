@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OOPMihkel
 {
-    public class Isik
+    public abstract class Isik
     {
         // Omadused ehk väljad
         //public string Nimi;
@@ -23,6 +23,8 @@ namespace OOPMihkel
             }
                 
         }
+        // Abstraktne meetod – sisu puudub, alamklassid PEAVAD selle ise looma
+        public abstract void Kirjelda();
 
 
 
