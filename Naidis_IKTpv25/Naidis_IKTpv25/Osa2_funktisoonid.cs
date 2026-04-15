@@ -61,26 +61,39 @@ namespace Naidis_IKTpv25
             vastus = $"Tere {nimi}, {otsus}";
             return vastus;
         }
+        static List<string> pinginaabridList = new List<string>();
+
         public static void Pinginaabrid()
         {
             Console.WriteLine("Sisesta esimene nimi ");
             string nimi1 = Console.ReadLine();
-
+    
             Console.WriteLine("Sisesta teine nimi ");
             string nimi2 = Console.ReadLine();
-
+    
             if (nimi1 != "" && nimi2 != "")
             {
                 Console.WriteLine($"{nimi1} ja {nimi2} on täna pinginaabrid.");
+    
+                // Lisame paari listi
+                pinginaabridList.Add($"{nimi1} ja {nimi2}");
             }
             else
             {
                 Console.WriteLine("Palun sisesta kaks nime");
             }
-
-
-
         }
+        public static void NäitaKõikiPinginaabreid()
+        {
+            Console.WriteLine("Kõik pinginaabrid:");
+            foreach (var paar in pinginaabridList)
+            {
+                Console.WriteLine(paar);
+            }
+        }
+
+
+        
         public static void RemondiKalk()
         {
             Console.Write("Sisesta toa esimese seina pikkus (m): ");
