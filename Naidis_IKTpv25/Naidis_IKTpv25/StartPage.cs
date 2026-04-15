@@ -55,44 +55,42 @@ namespace Naidis_IKTpv25
 
             //    Console.WriteLine(e);
             //}
+            
+            Console.WriteLine("1, 2, 3 Osa Funktsioonid");
+            Console.WriteLine("1. Juku");
+            Console.WriteLine("2. Pinginaabrid");
+            Console.WriteLine("3. Pindala");
+            Console.WriteLine("4. Soodus");
+            Console.WriteLine("5. Temperatuur");
+            Console.WriteLine("6. Pikkus");
+            Console.WriteLine("7. Pood");
+            Console.WriteLine("8. MuudaElement");
+            Console.WriteLine("9. Täida_massiiv");
+            Console.WriteLine("10. foreachFunktsioon");
+            Console.WriteLine("11. GenereeriRuudud");
+            Console.WriteLine("12. Täida_Doublemassiiv");
+            Console.WriteLine("13. ostaElevantAra");
+            Console.WriteLine("14. arvumang");
+            Console.WriteLine("15. SuurimNeliarv");
+            Console.WriteLine("16. GenereeriKorrutustabel");
+            Console.WriteLine("17. arvudRuudud");
+            Console.WriteLine("18. Positiivsed_ja_negatiivsed");
+            Console.WriteLine("19. Rohkem kui keskmine");
+            Console.WriteLine("20. suurimJaIndeks");
+            Console.WriteLine("21. Statistika Inimesed");
+            Console.WriteLine("22. ÕpilastegaMängimine");
+            Console.WriteLine("23. binaariOtsing");
+            Console.WriteLine("24. PaariPaaritud");
+            Console.WriteLine("25. Näita pinginaabreid");
+            Console.WriteLine("0. Välja");
 
-            int[] arvud = new int[5];
-            while (true)
-            {
-                Console.WriteLine("1, 2, 3 Osa Funktsioonid");
 
-                Console.WriteLine("1. Juku");
-                Console.WriteLine("2. pinginabrid");
-                Console.WriteLine("3. pindala");
-                Console.WriteLine("4. soodus");
-                Console.WriteLine("5. tem");
-                Console.WriteLine("6. pikk");
-                Console.WriteLine("7. pood");
-                Console.WriteLine("8. MuudaElement");
-                Console.WriteLine("9. Täida_massiiv");
-                Console.WriteLine("10. foreachFunktisoon");
-                Console.WriteLine("11. GenereeriRuudud");
-                Console.WriteLine("12. Täida_Doublemassiiv та аналіз");
-                Console.WriteLine("13. ostsElevantAra");
-                Console.WriteLine("14. arvumang");
-                Console.WriteLine("15. SuurimNeliarv");
-                Console.WriteLine("16. GenereeriKorrutustabel");
-                Console.WriteLine("17. arvudRuudud");
-                Console.WriteLine("18. Positiivsed_ja_negatiivsed");
-                Console.WriteLine("20. arvudRuudud (повторно)");
-                Console.WriteLine("21. Rohkem kui keskmine");
-                Console.WriteLine("22. suurimJaIndeks");
-                Console.WriteLine("23. Statistika Inimesed");
-                Console.WriteLine("24. ÕpilastegaMängimine");
-                Console.WriteLine("25. binaariOsting");
-                Console.WriteLine("26. PaariPaaritud");
-                Console.WriteLine("0. Välja");
-                string valik = Console.ReadLine();
-                 if ( valik == "1")
-                 {
+            string valik = Console.ReadLine();
+                
+                if (valik == "1")
+                {
                     Osa2_funktisoonid.Juku();
-
-                 }
+                }
                 else if (valik == "2")
                 {
                     Osa2_funktisoonid.Pinginaabrid();
@@ -131,15 +129,15 @@ namespace Naidis_IKTpv25
                 }
                 else if (valik == "11")
                 {
-                    Osa3_funktsioonid.ostaElevantAra();
+                    Osa3_funktsioonid.GenereeriRuudud();
                 }
                 else if (valik == "12")
                 {
-                    Osa3_funktsioonid.arvumang();
+                    Osa3_funktsioonid.TaidaDoubleMassiiv(); // paranda vastavaks sinu funktsioonile
                 }
                 else if (valik == "13")
                 {
-                    Osa3_funktsioonid.SuurimNeliarv();
+                    Osa3_funktsioonid.ostaElevantAra();
                 }
                 else if (valik == "14")
                 {
@@ -147,11 +145,11 @@ namespace Naidis_IKTpv25
                 }
                 else if (valik == "15")
                 {
-                    Osa3_funktsioonid.Korrutustabel(10, 10);
+                    Osa3_funktsioonid.SuurimNeliarv();
                 }
                 else if (valik == "16")
                 {
-                    Osa3_funktsioonid.Opilastegmangimine();
+                    Osa3_funktsioonid.Korrutustabel(10, 10);
                 }
                 else if (valik == "17")
                 {
@@ -161,22 +159,30 @@ namespace Naidis_IKTpv25
                 {
                     Osa3_funktsioonid.PosJaNeg();
                 }
-                 else if (valik == "20")
-                 {
+                else if (valik == "20")
+                {
                     Osa3_funktsioonid.KeskSuuremad();
-                 }
-                 else if (valik == "21")
-                 {
+                }
+                else if (valik == "21")
+                {
                     Osa3_funktsioonid.KoigeSuuremaOtsing();
-                 }
-                 else if (valik == "22")
-                 {
+                }
+                else if (valik == "22")
+                {
                     Osa3_funktsioonid.PaarisjaPaaritu();
-                 }
-                 else
-                 {
+                }
+                else if (valik == "23")
+                {
+                    Osa2_funktsioonid.NäitaKõikiPinginaabreid();
+                }
+                else if (valik == "0")
+                {
+                    break;
+                }
+                else
+                {
                     Console.WriteLine("Viga! Palun vali uuesti");
-                 }
+                }
                   
 
                 
