@@ -16,6 +16,16 @@ namespace OOPMihkel
         public TööTüüp VäljamakseTüüp { get; set; } = TööTüüp.Toetus;
         public Õppevorm Staatus { get; set; } // Kasutame enumi andmetüübina
 
+        public Õpilane() : base()
+        {
+            
+        }
+        public Õpilane(string nimi, string kool, int klass) : base(nimi)
+        {
+            Nimi = nimi;
+            Kool = kool;
+            Klass = klass;
+        }
 
 
 
@@ -25,9 +35,9 @@ namespace OOPMihkel
         {
             Console.WriteLine($"{Nimi} õpib {Kool} {Klass}. klassis.");
         }
-        public override void Kirjelda()
+        public override string Kirjelda()
         {
-            Console.WriteLine($"{Nimi} õpib {Klass}. klassis. Vorm: {Staatus}");
+            return $"{Nimi} õpib {Klass}. klassis. Vorm: {Staatus}";
         }
         public double ArvutaPalk()
         {
