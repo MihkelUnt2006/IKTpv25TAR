@@ -6,7 +6,7 @@ namespace OOPMihkel
 {
     public class Koolihaldus
     {
-        
+
         // Kapseldatud list
         private List<Isik> inimesed = new List<Isik>();
 
@@ -66,9 +66,9 @@ namespace OOPMihkel
             Console.WriteLine($"\n--- OTSINGU TULEMUSED (Sünniaasta: {sünniaasta}) ---");
             bool leitud = false;
 
-            foreach(var isik in inimesed)
+            foreach (var isik in inimesed)
             {
-                if(isik.Sünniaasta == sünniaasta)
+                if (isik.Sünniaasta == sünniaasta)
                 {
                     isik.Kirjelda();
                     Console.WriteLine("----------");
@@ -99,12 +99,25 @@ namespace OOPMihkel
                 }
                 Console.WriteLine($"Nimekiri salvestatud faili: {failinimi}");
             }
-            
+
             catch (Exception ex)
             {
                 Console.WriteLine($"Faili kirjutamise viga: {ex.Message}");
             }
         }
+        public void KuvaAinultÕpilased()
+        {
+            Console.WriteLine("\n--- AINULT ÕPILASED (foreach + is) ---");
+            foreach (var isik in inimesed)
+            {
+                if (isik is Õpilane)
+                {
+                    isik.Kirjelda();
+                }
+            }
+            Console.WriteLine("\n--- AINULT ÕPILASED (LINQ) ---");
+            inimesed.OfType<Õpilane>().ToList().ForEach(õ => õ.Kirjelda());
 
+        }
     }
 }

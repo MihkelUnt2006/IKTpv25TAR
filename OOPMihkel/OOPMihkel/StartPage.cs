@@ -189,8 +189,9 @@ namespace OOPMihkel
             minuKool.Otsi(1989);
 
             Console.WriteLine($"Koolis on hetkel süsteemis registreeritud {Isik.InimesteKoguarv} isikut.");
+            Console.WriteLine("\n KuvaAinultÕpilased ");
+            minuKool.KuvaAinultÕpilased();
 
-                
         }
     }
 }
