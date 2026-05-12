@@ -2,16 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp1
+namespace Soidukite_liidese_rakendamine
 {
-     // Liides kõikidele sõidukitele
     public interface ISõiduk
     {
-
-        // Arvutab sõiduki kulu
         double ArvutaKulu();
-        // Tagastab läbitud vahemaa
         double ArvutaVahemaa();
-
     }
 }

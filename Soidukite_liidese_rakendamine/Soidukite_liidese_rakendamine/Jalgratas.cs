@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp1
+namespace Soidukite_liidese_rakendamine
 {
     public class Jalgratas : ISõiduk
     {
