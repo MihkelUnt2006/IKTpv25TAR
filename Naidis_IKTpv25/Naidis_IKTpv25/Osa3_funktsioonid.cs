@@ -45,21 +45,24 @@ namespace Naidis_IKTpv25
             while (true)
             {
                 Console.WriteLine("Osta elevant ära");
-                string vastus = Console.ReadLine().ToLower();
-                if (vastus == "jah")
+                try
                 {
-                    Console.WriteLine("Oled ostnud elevandi!");
-                    break;
+                    string vastus = Console.ReadLine()?.ToLower() ?? "";
+                    if (vastus == "jah")
+                    {
+                        Console.WriteLine("Oled ostnud elevandi!");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Kõik nii rakivad, aga Osta elevant ära");
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    Console.WriteLine("Kõik nii rakivad, aga Osta elevant ära");
+                    Console.WriteLine("Sisendi viga: " + e.Message);
                 }
-
             }
-
-
-
         }
 
         public static void arvumang()
@@ -67,23 +70,33 @@ namespace Naidis_IKTpv25
             Random rnd = new Random();
             int arv = rnd.Next(1, 101);
             int katse = 0;
+
             for (int i = 0; i < 5; i++)
             {
                 Console.Write("Arva ära number 1-100: ");
-                int arva = int.Parse(Console.ReadLine());
-                katse++;
-                if (arva > arv)
+                try
                 {
-                    Console.WriteLine("Sinu number on väiksem");
+                    int arva = int.Parse(Console.ReadLine());
+                    katse++;
+                    if (arva > arv)
+                        Console.WriteLine("Sinu number on väiksem");
+                    else if (arva < arv)
+                        Console.WriteLine("Sinu number on suurem");
+                    else
+                    {
+                        Console.WriteLine($"Õige! Arvasid ära {katse} katsel.");
+                        break;
+                    }
                 }
-                else if (arva < arv)
+                catch (FormatException)
                 {
-                    Console.WriteLine("Sinu number on suurem");
+                    Console.WriteLine("Palun sisesta arv!");
+                    i--; // ei loe seda katset
                 }
-                else
+                catch (OverflowException)
                 {
-                    Console.WriteLine($"Õige! Arvasid ära {katse} katsel.");
-                    break;
+                    Console.WriteLine("Arv on liiga suur või väike!");
+                    i--;
                 }
             }
 
@@ -93,15 +106,23 @@ namespace Naidis_IKTpv25
         {
             Console.WriteLine("Sisesta neli arvu:");
             double[] arvud = new double[4];
+
             for (int i = 0; i < arvud.Length; i++)
             {
                 Console.Write($"Sisesta {i + 1}. arv: ");
-
-                foreach (double arv in arvud)
+                try
                 {
-                    Console.WriteLine(arv);
+                    arvud[i] = double.Parse(Console.ReadLine());
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Vigane sisend! Proovi uuesti.");
+                    i--;
                 }
             }
+
+            double suurim = arvud.Max();
+            Console.WriteLine("Suurim arv: " + suurim);
         }
         public static void Korrutustabel(int read, int veerud)
         {

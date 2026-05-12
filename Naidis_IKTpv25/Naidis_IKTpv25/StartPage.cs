@@ -82,7 +82,8 @@ namespace Naidis_IKTpv25
             Console.WriteLine("23. binaariOtsing");
             Console.WriteLine("24. PaariPaaritud");
             Console.WriteLine("25. Näita pinginaabreid");
-            Console.WriteLine("0. Välja");
+            Console.WriteLine("26. Kontrolli pinginaabreid");
+            
 
 
             string valik = Console.ReadLine();
@@ -129,55 +130,44 @@ namespace Naidis_IKTpv25
                 }
                 else if (valik == "11")
                 {
-                    Osa3_funktsioonid.GenereeriRuudud();
-                }
-                else if (valik == "12")
-                {
-                    Osa3_funktsioonid.TaidaDoubleMassiiv(); // paranda vastavaks sinu funktsioonile
-                }
-                else if (valik == "13")
-                {
                     Osa3_funktsioonid.ostaElevantAra();
                 }
-                else if (valik == "14")
+                
+                else if (valik == "12")
                 {
                     Osa3_funktsioonid.arvumang();
                 }
-                else if (valik == "15")
+                else if (valik == "13")
                 {
                     Osa3_funktsioonid.SuurimNeliarv();
                 }
-                else if (valik == "16")
+                else if (valik == "14")
                 {
                     Osa3_funktsioonid.Korrutustabel(10, 10);
                 }
-                else if (valik == "17")
+                else if (valik == "15")
                 {
                     Osa3_funktsioonid.ArvudeRuudud();
                 }
-                else if (valik == "18")
+                else if (valik == "16")
                 {
                     Osa3_funktsioonid.PosJaNeg();
                 }
-                else if (valik == "20")
+                else if (valik == "17")
                 {
                     Osa3_funktsioonid.KeskSuuremad();
                 }
-                else if (valik == "21")
+                else if (valik == "18")
                 {
                     Osa3_funktsioonid.KoigeSuuremaOtsing();
                 }
-                else if (valik == "22")
+                else if (valik == "19")
                 {
                     Osa3_funktsioonid.PaarisjaPaaritu();
                 }
-                else if (valik == "23")
+                else if (valik == "20")
                 {
-                    Osa2_funktsioonid.NäitaKõikiPinginaabreid();
-                }
-                else if (valik == "0")
-                {
-                    break;
+                    Osa2_funktisoonid.NäitaKõikiPinginaabreid();
                 }
                 else
                 {
@@ -204,8 +194,7 @@ namespace Naidis_IKTpv25
                 
 
 
-            }
-
+            
         }
     }
 }
