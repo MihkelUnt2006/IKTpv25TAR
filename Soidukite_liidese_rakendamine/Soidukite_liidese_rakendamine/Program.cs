@@ -14,6 +14,7 @@ soidukid.Add(new Auto(7, 200));
 soidukid.Add(new Jalgratas(50));
 soidukid.Add(new Buss(20, 300, 1.8, 40));
 soidukid.Add(new Mootorratas(5, 150));
+soidukid.Add(new Auto(6.8, 25));
 string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "andmed.txt");
 
 
@@ -132,8 +133,13 @@ try
                 if (double.TryParse(ak, out double aKulu) && double.TryParse(akm, out double aKmValue))
                 {
                     var a = new Auto(aKulu, aKmValue);
+
                     soidukid.Add(a);
+
+                    File.AppendAllText(path, a.ToString() + Environment.NewLine);
+
                     koguKulu += a.ArvutaKulu();
+
                     Console.WriteLine("Lisatud: " + a);
                 }
                 else Console.WriteLine("Vigased sisendid (Auto).");
@@ -145,8 +151,13 @@ try
                 if (double.TryParse(jk, out double jKmValue))
                 {
                     var j = new Jalgratas(jKmValue);
+
                     soidukid.Add(j);
+
+                    File.AppendAllText(path, j.ToString() + Environment.NewLine);
+
                     koguKulu += j.ArvutaKulu();
+
                     Console.WriteLine("Lisatud: " + j);
                 }
                 else Console.WriteLine("Vigased sisendid (Jalgratas).");
@@ -168,8 +179,13 @@ try
                     int.TryParse(br, out int bReisijad) && bReisijad > 0)
                 {
                     var b = new Buss(bKulu, bKmValue, bHindValue, bReisijad);
+
                     soidukid.Add(b);
+
+                    File.AppendAllText(path, b.ToString() + Environment.NewLine);
+
                     koguKulu += b.ArvutaKulu();
+
                     Console.WriteLine("Lisatud: " + b);
                 }
                 else Console.WriteLine("Vigased sisendid (Buss).");
@@ -185,8 +201,13 @@ try
                     double.TryParse(mkm, out double mKmValue))
                 {
                     var m = new Mootorratas(mKulu, mKmValue);
+
                     soidukid.Add(m);
+
+                    File.AppendAllText(path, m.ToString() + Environment.NewLine);
+
                     koguKulu += m.ArvutaKulu();
+
                     Console.WriteLine("Lisatud: " + m);
                 }
                 else Console.WriteLine("Vigased sisendid (Mootorratas).");
