@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,7 +11,7 @@ namespace OOPMihkel
 
         public override string Kirjelda()
         {
-            return $"Üliõpilane {Nimi} õpib {Kuurs}. Kuursusel. Vorm: {Staatus}";
+            return $"Üliõpilane {Nimi}, eriala: {Eriala}, õpib {Kuurs}. kursuse. Vorm: {Staatus}";
         }
     }
 }
