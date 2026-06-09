@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -86,7 +86,7 @@ namespace OOPMihkel
             {
                 using (StreamWriter writer = new StreamWriter(failinimi, append: false, encoding: Encoding.UTF8))
                 {
-                    writer.WriteLine($"--- KOOLI NIMEKIRI (Salvestatud: {DateTime.Now}) ---")
+                    writer.WriteLine($"--- KOOLI NIMEKIRI (Salvestatud: {DateTime.Now}) ---");
                     TextWriter vanaVäljund = Console.Out;
                     Console.SetOut(writer);
 
