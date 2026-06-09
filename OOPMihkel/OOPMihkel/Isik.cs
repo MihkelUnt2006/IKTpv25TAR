@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -54,6 +54,7 @@ namespace OOPMihkel
             public string Nimi { get; set; }
 
             // Kontrollitud omadus
+            // Harjutus 8: Exception Handling
             public int Sünniaasta
             {
                 get { return sünniaasta; }
@@ -62,9 +63,7 @@ namespace OOPMihkel
                     if (value > 1900 && value <= DateTime.Now.Year)
                         sünniaasta = value;
                     else
-                        Console.WriteLine("Vigane sünniaasta!");
-
-                    
+                        throw new ArgumentException($"Vigane aasta: {value}! Aasta peab olema vahemikus 1900-{DateTime.Now.Year}");
                 }
             }
 

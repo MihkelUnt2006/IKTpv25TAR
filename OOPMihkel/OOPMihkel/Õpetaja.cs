@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -18,12 +18,12 @@ namespace OOPMihkel
 
         }
 
-        public Õpetaja(string nimi, string aine, double tunnitasu)
+        // Harjutus 5: Täienda konstruktorit
+        public Õpetaja(string nimi, string aine, double tunnitasu) : base(nimi)
         {
             Nimi = nimi;
             Aine = aine;
             Tunnitasu = tunnitasu;
-            
         }
 
         public TööTüüp VäljamakseTüüp { get; set; } = TööTüüp.palk;

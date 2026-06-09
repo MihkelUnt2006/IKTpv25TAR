@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace OOPMihkel
 {
@@ -17,6 +18,13 @@ namespace OOPMihkel
             inimesed.Add(isik);
         }
 
+        // Harjutus 6: Ülelaaditud meetod - List<Isik> parameetriga
+        public void LisaInimene(List<Isik> uuedInimesed)
+        {
+            inimesed.AddRange(uuedInimesed);
+            Console.WriteLine($"Lisati {uuedInimesed.Count} uut inimest.");
+        }
+
         public void KuvaKõik()
         {
             Console.WriteLine("\n--- KOOLI NIMEKIRI ---");
@@ -24,14 +32,10 @@ namespace OOPMihkel
             {
                 // Polümorfism teeb siin imesid! 
                 // C# teab ise, kas käivitada Õpetaja või Õpilase Kirjelda() meetod.
-                isik.Kirjelda();
+                Console.WriteLine(isik.Kirjelda());
             }
         }
-        public void LisaInimene(List<Isik> uuedInimesed)
-        {
-            inimesed.AddRange(uuedInimesed);
-            Console.WriteLine($"Lisati {uuedInimesed.Count} uut inimest.");
-        }
+
         public void OtsiNimeJärgi(string otsitavNimi)
         {
 
@@ -42,7 +46,7 @@ namespace OOPMihkel
             {
                 if (isik.Nimi.Contains(otsitavNimi, StringComparison.OrdinalIgnoreCase))
                 {
-                    isik.Kirjelda();
+                    Console.WriteLine(isik.Kirjelda());
                     Console.WriteLine("--------");
                     leitud = true;
                 }
@@ -55,7 +59,7 @@ namespace OOPMihkel
             Console.WriteLine($"\nOtsime nime: {otsitavNimi}");
             foreach (var isik in inimesed)
             {
-                if (isik.Nimi.Contains(otsitavNimi)) isik.Kirjelda();
+                if (isik.Nimi.Contains(otsitavNimi)) Console.WriteLine(isik.Kirjelda());
             }
         }
 
@@ -70,7 +74,7 @@ namespace OOPMihkel
             {
                 if (isik.Sünniaasta == sünniaasta)
                 {
-                    isik.Kirjelda();
+                    Console.WriteLine(isik.Kirjelda());
                     Console.WriteLine("----------");
                     leitud = true;
                 }
@@ -80,6 +84,8 @@ namespace OOPMihkel
                 Console.WriteLine($"Aaastal {sünniaasta} sündinud isikuid nimekirjas ei ole.");
             }
         }
+
+        // Harjutus 7: Salvestamine faili
         public void SalvestaFaili(string failinimi)
         {
             try
@@ -87,15 +93,15 @@ namespace OOPMihkel
                 using (StreamWriter writer = new StreamWriter(failinimi, append: false, encoding: Encoding.UTF8))
                 {
                     writer.WriteLine($"--- KOOLI NIMEKIRI (Salvestatud: {DateTime.Now}) ---");
-                    TextWriter vanaVäljund = Console.Out;
-                    Console.SetOut(writer);
+                    writer.WriteLine();
 
                     foreach (var isik in inimesed)
                     {
-                        isik.Kirjelda();
+                        writer.WriteLine(isik.Kirjelda());
                     }
 
-                    Console.SetOut(vanaVäljund);
+                    writer.WriteLine();
+                    writer.WriteLine($"Kokku {inimesed.Count} isikut");
                 }
                 Console.WriteLine($"Nimekiri salvestatud faili: {failinimi}");
             }
@@ -105,6 +111,8 @@ namespace OOPMihkel
                 Console.WriteLine($"Faili kirjutamise viga: {ex.Message}");
             }
         }
+
+        // Harjutus 9: Filtreerimine - ainult õpilased
         public void KuvaAinultÕpilased()
         {
             Console.WriteLine("\n--- AINULT ÕPILASED (foreach + is) ---");
@@ -112,11 +120,11 @@ namespace OOPMihkel
             {
                 if (isik is Õpilane)
                 {
-                    isik.Kirjelda();
+                    Console.WriteLine(isik.Kirjelda());
                 }
             }
             Console.WriteLine("\n--- AINULT ÕPILASED (LINQ) ---");
-            inimesed.OfType<Õpilane>().ToList().ForEach(õ => õ.Kirjelda());
+            inimesed.OfType<Õpilane>().ToList().ForEach(õ => Console.WriteLine(õ.Kirjelda()));
 
         }
     }
