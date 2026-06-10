@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OOPMihkel
 {
-    // Harjutus 10: Kursus klass - seosed objektide vahel
+    
     public class Kursus
     {
         public string Nimi { get; set; }

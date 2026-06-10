@@ -7,14 +7,15 @@ namespace OOPMihkel
     public abstract class Isik
     {
         
-        // Staatiline väli - ühine KÕIGILE isikutele!
+        
         public static int InimesteKoguarv = 0;
 
         public Isik(string nimi)
         {
             Nimi = nimi;
 
-            // Iga kord, kui luuakse uus isik (käivitub konstruktor), suurendame loendurit
+            
+            
             InimesteKoguarv++;
         }
 
@@ -25,11 +26,7 @@ namespace OOPMihkel
 
 
 
-        // Omadused ehk väljad
-        //public string Nimi;
-        //public int Vanus;
-
-        // Tegevus ehk meetod 
+       
         public void Tervita()
         {
             if(string.IsNullOrEmpty(Nimi) || sünniaasta == 0)
@@ -42,19 +39,18 @@ namespace OOPMihkel
             }
                 
         }
-        // Abstraktne meetod – sisu puudub, alamklassid PEAVAD selle ise looma
+        
         public abstract string Kirjelda();
 
 
 
-        // Privaatne väli - otse ligi ei saa
+        
         private int sünniaasta;
 
-            // Avalik omadus (Property) automaatse get/set logikaga
+         
             public string Nimi { get; set; }
 
-            // Kontrollitud omadus
-            // Harjutus 8: Exception Handling
+            
             public int Sünniaasta
             {
                 get { return sünniaasta; }
@@ -69,7 +65,7 @@ namespace OOPMihkel
 
 
 
-        // Arvutatud omadus (ainult lugemiseks / getter)
+      
         public int Vanus => sünniaasta == 0 ? 0 : DateTime.Now.Year - sünniaasta;
         
     }

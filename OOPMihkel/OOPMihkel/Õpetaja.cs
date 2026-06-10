@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OOPMihkel
 {
-    // Õpetaja pärib klassist Isik (koolon tähistab pärimist)
+   
     public class Õpetaja : Isik, ITööline, IHindaja
     {
         public string Aine { get; set; }
@@ -18,7 +18,7 @@ namespace OOPMihkel
 
         }
 
-        // Harjutus 5: Täienda konstruktorit
+        
         public Õpetaja(string nimi, string aine, double tunnitasu) : base(nimi)
         {
             Nimi = nimi;
@@ -32,7 +32,7 @@ namespace OOPMihkel
         {
             Console.WriteLine($"{Nimi} õpetab ainet: {Aine}.");
         }
-        // override kirjutab abstraktse meetodi üle
+       
         public override string Kirjelda()
         {
             return $"Mina olen õpetaja {Nimi} ja ma õpetan: {Aine}.";

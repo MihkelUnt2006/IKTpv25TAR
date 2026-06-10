@@ -10,8 +10,8 @@ namespace OOPMihkel
     }
     public interface ITööline
     {
-        TööTüüp VäljamakseTüüp { get; set; }// töö tüübi omadus
-        double ArvutaPalk(); // Ainult meetodi allkiri
+        TööTüüp VäljamakseTüüp { get; set; }
+        double ArvutaPalk(); 
     }
 
 }

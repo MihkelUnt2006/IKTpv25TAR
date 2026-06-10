@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OOPMihkel
 {
-    // Õpilane pärib klassist Isik
+    
     public class Õpilane : Isik, ITööline
     {
         public string Kool { get; set; }
@@ -14,7 +14,7 @@ namespace OOPMihkel
 
         public bool KasOnSotsTõend { get; set; } = false;
         public TööTüüp VäljamakseTüüp { get; set; } = TööTüüp.Toetus;
-        public Õppevorm Staatus { get; set; } // Kasutame enumi andmetüübina
+        public Õppevorm Staatus { get; set; } 
 
         public Õpilane() : base()
         {

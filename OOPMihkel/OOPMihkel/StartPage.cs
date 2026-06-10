@@ -48,7 +48,7 @@ namespace OOPMihkel
             õpetaja2.Tunnitasu = 10.5;
             õpetaja2.Tunnidkuus = 40;
 
-            //Õpetajad
+            
             string[] õpetajaNimed = { "Marina", "Aleksei", "Katrin", "Dmitri", "Liisa" };
             int[] õpetajaSünniaastad = { 1975, 1982, 1990, 1995, 1988 };
             string[] ained = { "programmeerimine", "matemaatika", "füüsika", "keemia", "eesti keel" };
@@ -56,17 +56,17 @@ namespace OOPMihkel
             int[] tunnidKuus = { 120, 130, 140, 150, 160 };
             string[] hinne = { "1", "2", "3", "4", "5" };
 
-            //Õpilased
+            
             string[] õpilasNimed = { "Yaroslav", "Anna", "Peeter", "Maria", "Ivan" };
             int[] õpilasSünniaastad = { 2005, 2006, 2007, 2008, 2009 };
             string[] koolid = { "TTHK", "Gustav Adolfi Gümnaasium", "Tallinna Reaalkool" };
             int[] klassid = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
             int[] puudumised = { 0, 5, 10, 13, 20 };
 
-            //Üliõpilane
+            
             string[] kuurs = { "1", "2", "3", "4", "5" };
 
-            //Direktor
+            
             double[] lisatasu = { 100, 200, 300, 400, 500 };
 
             Õppevorm[] vormid = (Õppevorm[])Enum.GetValues(typeof(Õppevorm));
@@ -101,7 +101,7 @@ namespace OOPMihkel
                 palgasaajad.Add(õpilane);
             }
 
-            // 🔹 Tsükkel
+            
             Console.WriteLine("---väljamaksed---");
             foreach (ITööline isik in palgasaajad)
             {
@@ -109,7 +109,7 @@ namespace OOPMihkel
                 Console.WriteLine($" {tüüp}  summa: {isik.ArvutaPalk()} eurot. {((Isik)isik).Nimi}");
             }
 
-            // Harjutus 5: Kasutame uut konstruktorit
+            
             Õpetaja op = new Õpetaja("Mati", "Programmeerimine", 12.5);
             Õpilane opilane1 = new Õpilane { Nimi = "Mari", Klass = 10, Staatus = Õppevorm.Päevane };
 
@@ -139,31 +139,31 @@ namespace OOPMihkel
                 new Õpilane("Sandra", "TTHK", 12),
                 new Õpetaja("Moonika", "Keemia", 12.0)
             };
-            minuKool.LisaInimene(uuedInimesed); // Harjutus 6: ülelaaditud meetod – lisa list korraga
+            minuKool.LisaInimene(uuedInimesed);
             Console.WriteLine("3 uut inimest lisatud korraga listiga!");
             
             Console.WriteLine("\n--- SalvestaFaili ---");
-            minuKool.SalvestaFaili("kooli_nimekiri.txt"); // Harjutus 7
+            minuKool.SalvestaFaili("kooli_nimekiri.txt"); 
 
             minuKool.Otsi(1989);
 
             Console.WriteLine($"Koolis on hetkel süsteemis registreeritud {Isik.InimesteKoguarv} isikut.");
-            Console.WriteLine("\n--- KuvaAinultÕpilased ---"); // Harjutus 9
+            Console.WriteLine("\n--- KuvaAinultÕpilased ---"); 
             minuKool.KuvaAinultÕpilased();
 
-            // Harjutus 10: Kursus ja seosed
+            
             Console.WriteLine("\n--- HARJUTUS 10: KURSUSE JA ÕPETAJA SEOS ---");
             Õpetaja matemaatika_Õpetaja = new Õpetaja("Jüri", "Matemaatika", 15.0);
             Kursus matemaatika_Kursus = new Kursus("Matemaatika Algkursus", matemaatika_Õpetaja);
             matemaatika_Kursus.KuvaInfo();
 
-            // Harjutus 8: Exception Handling
+           
             Console.WriteLine("\n--- HARJUTUS 8: EXCEPTION HANDLING ---");
             Õpilane testÕpilane = new Õpilane();
             testÕpilane.Nimi = "Test Õpilane";
             try
             {
-                testÕpilane.Sünniaasta = 2030; // Vigane - tulevikus
+                testÕpilane.Sünniaasta = 2030; 
             }
             catch (ArgumentException ex)
             {
@@ -172,7 +172,7 @@ namespace OOPMihkel
 
             try
             {
-                testÕpilane.Sünniaasta = 1850; // Vigane - liiga kaua aega tagasi
+                testÕpilane.Sünniaasta = 1850; 
             }
             catch (ArgumentException ex)
             {
@@ -181,7 +181,7 @@ namespace OOPMihkel
 
             try
             {
-                testÕpilane.Sünniaasta = 2008; // Kehtiv
+                testÕpilane.Sünniaasta = 2008; 
                 Console.WriteLine($"Sünniaasta õigesti määratud: {testÕpilane.Sünniaasta}");
             }
             catch (ArgumentException ex)
